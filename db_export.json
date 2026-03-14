@@ -1,0 +1,162 @@
+{
+  "users": [
+    {
+      "id": "cmmqg7yap0000yujw6xb8r47w",
+      "email": "admin@packmycake.com",
+      "password": "$2b$10$g1q1h4zHiHpOlyvjeYR4JOC7A3azGENmuZCfnOayaSb.nWUBA1ptO",
+      "name": "Admin",
+      "role": "ADMIN",
+      "createdAt": "2026-03-14T14:56:26.978Z",
+      "updatedAt": "2026-03-14T14:56:26.978Z"
+    },
+    {
+      "id": "cmmqh0hvd0000yuhvt5xtcpf4",
+      "email": "jarvis@dsignxt.com",
+      "password": "$2b$10$CQpW4M.JSNk1.KW.e/fbwOjLpdNMSthiMI8U2NOgSJE5W0z4LdqPi",
+      "name": "Jarvis Dsignxt",
+      "role": "CUSTOMER",
+      "createdAt": "2026-03-14T15:18:38.713Z",
+      "updatedAt": "2026-03-14T15:18:38.713Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cmmqg7z1r0001yujwrh2afnd7",
+      "name": "Cake Boxes",
+      "slug": "cake-boxes",
+      "description": "Premium cake boxes for all sizes.",
+      "image": null,
+      "createdAt": "2026-03-14T14:56:27.951Z",
+      "updatedAt": "2026-03-14T14:56:27.951Z"
+    },
+    {
+      "id": "cmmqg7z1t0002yujwap4cyvcl",
+      "name": "Cake Boards",
+      "slug": "cake-boards",
+      "description": "Sturdy cake boards.",
+      "image": null,
+      "createdAt": "2026-03-14T14:56:27.954Z",
+      "updatedAt": "2026-03-14T14:56:27.954Z"
+    },
+    {
+      "id": "cmmqg7z1v0003yujwmerzkr27",
+      "name": "Cupcake Boxes",
+      "slug": "cupcake-boxes",
+      "description": "Boxes for cupcakes and muffins.",
+      "image": null,
+      "createdAt": "2026-03-14T14:56:27.956Z",
+      "updatedAt": "2026-03-14T14:56:27.956Z"
+    },
+    {
+      "id": "cmmqg7z1x0004yujwgrs8oe0s",
+      "name": "Macaron Boxes",
+      "slug": "macaron-boxes",
+      "description": "Elegant macaron packaging.",
+      "image": null,
+      "createdAt": "2026-03-14T14:56:27.958Z",
+      "updatedAt": "2026-03-14T14:56:27.958Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "cmmqg7z200006yujw4120a6hy",
+      "name": "White Window Cake Box - 10x10x5",
+      "slug": "white-window-cake-box-10x10x5",
+      "description": "High quality white cake box with a clear window. Perfect for 1kg cakes.",
+      "price": 45,
+      "stock": 500,
+      "images": "[\"https://images.unsplash.com/photo-1558326567-98ae2405596b?auto=format&fit=crop&q=80&w=800\",\"https://images.unsplash.com/photo-1587241321921-91a834d6d191?auto=format&fit=crop&q=80&w=800\"]",
+      "categoryId": "cmmqg7z1r0001yujwrh2afnd7",
+      "createdAt": "2026-03-14T14:56:27.960Z",
+      "updatedAt": "2026-03-14T14:56:27.960Z"
+    },
+    {
+      "id": "cmmqg7z220008yujwaoncejeb",
+      "name": "Gold Cake Board - 10 inch",
+      "slug": "gold-cake-board-10-inch",
+      "description": "Sturdy 3mm MDF cake board with premium gold foil finish.",
+      "price": 35,
+      "stock": 1000,
+      "images": "[\"https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&q=80&w=800\"]",
+      "categoryId": "cmmqg7z1t0002yujwap4cyvcl",
+      "createdAt": "2026-03-14T14:56:27.962Z",
+      "updatedAt": "2026-03-14T14:56:27.962Z"
+    },
+    {
+      "id": "cmmqg7z24000ayujw9f6qdr5w",
+      "name": "Kraft Cupcake Box - 6 Cavity",
+      "slug": "kraft-cupcake-box-6-cavity",
+      "description": "Eco-friendly kraft box with insert for 6 standard cupcakes.",
+      "price": 25,
+      "stock": 300,
+      "images": "[\"https://images.unsplash.com/photo-1550617931-e17a7b70dce2?auto=format&fit=crop&q=80&w=800\"]",
+      "categoryId": "cmmqg7z1v0003yujwmerzkr27",
+      "createdAt": "2026-03-14T14:56:27.964Z",
+      "updatedAt": "2026-03-14T14:56:27.964Z"
+    },
+    {
+      "id": "cmmqg7z26000cyujw8emcfqlj",
+      "name": "Clear Macaron Box - Holds 10",
+      "slug": "clear-macaron-box-holds-10",
+      "description": "Crystal clear plastic box for displaying 10 macarons perfectly.",
+      "price": 15,
+      "stock": 800,
+      "images": "[\"https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&q=80&w=800\"]",
+      "categoryId": "cmmqg7z1x0004yujwgrs8oe0s",
+      "createdAt": "2026-03-14T14:56:27.966Z",
+      "updatedAt": "2026-03-14T14:56:27.966Z"
+    },
+    {
+      "id": "cmmqg7z28000eyujw2oanr39p",
+      "name": "Tall Cake Box - 12x12x12",
+      "slug": "tall-cake-box-12x12x12",
+      "description": "Extra tall corrugated box for tiered cakes.",
+      "price": 85,
+      "stock": 200,
+      "images": "[\"https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&q=80&w=800\"]",
+      "categoryId": "cmmqg7z1r0001yujwrh2afnd7",
+      "createdAt": "2026-03-14T14:56:27.968Z",
+      "updatedAt": "2026-03-14T14:56:27.968Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "cmmqh0hvg0002yuhvmap869f4",
+      "userId": "cmmqh0hvd0000yuhvt5xtcpf4",
+      "status": "DELIVERED",
+      "totalAmount": 45,
+      "shippingAddress": "sdsaasddsa, Chennai, tn 625020",
+      "shipmentId": null,
+      "createdAt": "2026-03-14T15:18:38.717Z",
+      "updatedAt": "2026-03-14T15:30:23.936Z"
+    },
+    {
+      "id": "cmmqhmn1z0001yuxqz4htaedy",
+      "userId": "cmmqg7yap0000yujw6xb8r47w",
+      "status": "SHIPPED",
+      "totalAmount": 45,
+      "shippingAddress": "sdsaasddsa, Chennai, tn 625020",
+      "shipmentId": null,
+      "createdAt": "2026-03-14T15:35:51.863Z",
+      "updatedAt": "2026-03-14T15:36:30.212Z"
+    }
+  ],
+  "orderItems": [
+    {
+      "id": "cmmqh0hvg0004yuhvvuz0uhc4",
+      "orderId": "cmmqh0hvg0002yuhvmap869f4",
+      "productId": "cmmqg7z200006yujw4120a6hy",
+      "quantity": 1,
+      "price": 45
+    },
+    {
+      "id": "cmmqhmn1z0003yuxqgr2xukbe",
+      "orderId": "cmmqhmn1z0001yuxqz4htaedy",
+      "productId": "cmmqg7z200006yujw4120a6hy",
+      "quantity": 1,
+      "price": 45
+    }
+  ],
+  "addresses": [],
+  "settings": []
+}
