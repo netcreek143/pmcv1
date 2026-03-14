@@ -117,13 +117,13 @@ export default function Shop() {
             {(searchQuery || categoryQuery) && (
               <div className="flex flex-wrap gap-2">
                 {searchQuery && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-orange-100 text-orange-800 text-xs font-bold">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-light text-brand-dark text-xs font-bold">
                     Search: {searchQuery}
                     <button onClick={() => {
                       const newParams = new URLSearchParams(searchParams);
                       newParams.delete('search');
                       setSearchParams(newParams);
-                    }} className="ml-1.5 hover:text-orange-900">
+                    }} className="ml-1.5 hover:text-brand-dark">
                       <X className="h-3 w-3" />
                     </button>
                   </span>
@@ -180,9 +180,9 @@ export default function Shop() {
                           type="checkbox" 
                           checked={categoryQuery === cat.slug}
                           onChange={() => toggleCategory(cat.slug)}
-                          className="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500 transition-colors cursor-pointer" 
+                           className="w-4 h-4 rounded border-gray-300 text-brand focus:ring-brand transition-colors cursor-pointer" 
                         /> 
-                        <span className={`ml-3 transition-colors ${categoryQuery === cat.slug ? 'text-orange-600 font-bold' : 'text-gray-600 group-hover:text-gray-900'}`}>{cat.name}</span>
+                        <span className={`ml-3 transition-colors ${categoryQuery === cat.slug ? 'text-brand font-bold' : 'text-gray-600 group-hover:text-gray-900'}`}>{cat.name}</span>
                       </label>
                     </li>
                   ))}
@@ -191,9 +191,9 @@ export default function Shop() {
               <div>
                 <h3 className="text-lg font-bold text-gray-900 mb-4 uppercase tracking-wider text-sm">Price Range</h3>
                 <ul className="space-y-3">
-                  <li><label className="flex items-center group cursor-pointer"><input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500 transition-colors cursor-pointer" /> <span className="ml-3 text-gray-600 group-hover:text-gray-900 transition-colors">Under ₹500</span></label></li>
-                  <li><label className="flex items-center group cursor-pointer"><input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500 transition-colors cursor-pointer" /> <span className="ml-3 text-gray-600 group-hover:text-gray-900 transition-colors">₹500 - ₹1000</span></label></li>
-                  <li><label className="flex items-center group cursor-pointer"><input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500 transition-colors cursor-pointer" /> <span className="ml-3 text-gray-600 group-hover:text-gray-900 transition-colors">Over ₹1000</span></label></li>
+                  <li><label className="flex items-center group cursor-pointer"><input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-brand focus:ring-brand transition-colors cursor-pointer" /> <span className="ml-3 text-gray-600 group-hover:text-gray-900 transition-colors">Under ₹500</span></label></li>
+                  <li><label className="flex items-center group cursor-pointer"><input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-brand focus:ring-brand transition-colors cursor-pointer" /> <span className="ml-3 text-gray-600 group-hover:text-gray-900 transition-colors">₹500 - ₹1000</span></label></li>
+                  <li><label className="flex items-center group cursor-pointer"><input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-brand focus:ring-brand transition-colors cursor-pointer" /> <span className="ml-3 text-gray-600 group-hover:text-gray-900 transition-colors">Over ₹1000</span></label></li>
                 </ul>
               </div>
             </div>
@@ -247,7 +247,7 @@ export default function Shop() {
                                 quantity: 1
                               });
                             }}
-                            className="bg-white text-gray-900 font-bold py-3 px-6 rounded-full w-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors shadow-lg"
+                            className="bg-white text-gray-900 font-bold py-3 px-6 rounded-full w-full flex items-center justify-center hover:bg-brand hover:text-white transition-colors shadow-lg"
                           >
                             <ShoppingBag className="h-4 w-4 mr-2" /> Add to Cart
                           </button>
@@ -255,7 +255,7 @@ export default function Shop() {
                       </Link>
                       <div className="flex flex-col flex-grow">
                         <div className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">{product.category?.name}</div>
-                        <Link to={`/product/${product.slug}`} className="text-lg font-bold text-gray-900 hover:text-orange-600 transition-colors line-clamp-2 mb-2">
+                        <Link to={`/product/${product.slug}`} className="text-lg font-bold text-gray-900 hover:text-brand transition-colors line-clamp-2 mb-2">
                           {product.name}
                         </Link>
                         <div className="mt-auto flex items-center gap-2">
@@ -276,7 +276,7 @@ export default function Shop() {
                 <p className="text-gray-500 max-w-md mx-auto">We couldn't find any products matching your current filters. Try adjusting your search criteria.</p>
                 <button 
                   onClick={clearFilters}
-                  className="mt-6 bg-gray-900 text-white px-6 py-3 rounded-full font-bold hover:bg-orange-600 transition-colors"
+                  className="mt-6 bg-gray-900 text-white px-6 py-3 rounded-full font-bold hover:bg-brand transition-colors"
                 >
                   Clear Filters
                 </button>

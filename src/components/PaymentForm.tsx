@@ -132,7 +132,7 @@ export default function PaymentForm({ clientSecret, formData, totalAmount }: { c
         onClick={handleSubmit}
         disabled={isLoading || !stripe || !elements} 
         id="submit"
-        className="w-full bg-gray-900 text-white py-4 rounded-xl font-bold hover:bg-orange-600 transition-colors shadow-lg hover:-translate-y-1 flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-gray-900 text-white py-4 rounded-xl font-bold hover:bg-brand transition-colors shadow-lg hover:-translate-y-1 flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <span id="button-text">
           {isLoading ? <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div> : <><Lock className="h-5 w-5 mr-2 inline" /> Pay Now</>}

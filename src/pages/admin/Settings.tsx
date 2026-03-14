@@ -90,7 +90,7 @@ export default function AdminSettings() {
         <button 
           onClick={handleSave}
           disabled={saving}
-          className="bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center hover:bg-orange-700 transition-colors disabled:opacity-50"
+          className="bg-brand text-white px-4 py-2 rounded-lg flex items-center hover:bg-brand-dark transition-colors disabled:opacity-50"
         >
           <Save className="h-5 w-5 mr-2" />
           {saving ? 'Saving...' : 'Save Settings'}
@@ -110,7 +110,7 @@ export default function AdminSettings() {
                   name="siteName"
                   value={settings.siteName}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none"
                 />
               </div>
               <div>
@@ -120,7 +120,7 @@ export default function AdminSettings() {
                   name="currency"
                   value={settings.currency}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none"
                 />
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function AdminSettings() {
                   name="contactEmail"
                   value={settings.contactEmail}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none"
                 />
               </div>
               <div>
@@ -146,7 +146,7 @@ export default function AdminSettings() {
                   name="phoneNumber"
                   value={settings.phoneNumber}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none"
                 />
               </div>
               <div className="md:col-span-2">
@@ -156,7 +156,7 @@ export default function AdminSettings() {
                   name="address"
                   value={settings.address}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none"
                 />
               </div>
             </div>
@@ -172,7 +172,7 @@ export default function AdminSettings() {
                   name="freeShippingThreshold"
                   value={settings.freeShippingThreshold}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none"
                 />
               </div>
             </div>

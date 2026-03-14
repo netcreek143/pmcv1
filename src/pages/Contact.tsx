@@ -28,8 +28,8 @@ export default function Contact() {
 
             <div className="space-y-8">
               <div className="flex items-start">
-                <div className="p-3 bg-orange-50 rounded-xl mr-4">
-                  <Mail className="h-6 w-6 text-orange-600" />
+                <div className="p-3 bg-brand-light rounded-xl mr-4">
+                  <Mail className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900">Email Us</h3>
@@ -39,8 +39,8 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start">
-                <div className="p-3 bg-orange-50 rounded-xl mr-4">
-                  <Phone className="h-6 w-6 text-orange-600" />
+                <div className="p-3 bg-brand-light rounded-xl mr-4">
+                  <Phone className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900">Call Us</h3>
@@ -50,8 +50,8 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start">
-                <div className="p-3 bg-orange-50 rounded-xl mr-4">
-                  <MapPin className="h-6 w-6 text-orange-600" />
+                <div className="p-3 bg-brand-light rounded-xl mr-4">
+                  <MapPin className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900">Visit Our Warehouse</h3>
@@ -72,7 +72,7 @@ export default function Contact() {
                 <p className="text-gray-600">Thank you for reaching out. We'll get back to you within 24 hours.</p>
                 <button 
                   onClick={() => setSubmitted(false)}
-                  className="mt-8 text-orange-600 font-bold hover:text-orange-700 underline underline-offset-4"
+                  className="mt-8 text-brand font-bold hover:text-brand-dark underline underline-offset-4"
                 >
                   Send another message
                 </button>
@@ -84,7 +84,7 @@ export default function Contact() {
                     <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Name</label>
                     <input 
                       type="text" required
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand outline-none transition-all"
                       placeholder="Your name"
                     />
                   </div>
@@ -92,7 +92,7 @@ export default function Contact() {
                     <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Email</label>
                     <input 
                       type="email" required
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand outline-none transition-all"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -101,7 +101,7 @@ export default function Contact() {
                   <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Subject</label>
                   <input 
                     type="text" required
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand outline-none transition-all"
                     placeholder="How can we help?"
                   />
                 </div>
@@ -109,13 +109,13 @@ export default function Contact() {
                   <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Message</label>
                   <textarea 
                     rows={5} required
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand outline-none transition-all"
                     placeholder="Tell us more..."
                   />
                 </div>
                 <button 
                   type="submit"
-                  className="w-full bg-orange-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-orange-700 transition-all shadow-lg shadow-orange-200"
+                  className="w-full bg-brand text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-brand-dark transition-all shadow-lg shadow-brand-light"
                 >
                   Send Message
                 </button>

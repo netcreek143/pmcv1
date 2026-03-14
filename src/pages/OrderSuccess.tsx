@@ -74,7 +74,7 @@ export default function OrderSuccess() {
       >
         <Link 
           to="/shop"
-          className="inline-flex items-center justify-center bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+          className="inline-flex items-center justify-center bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-brand transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
         >
           Continue Shopping <ArrowRight className="ml-2 h-5 w-5" />
         </Link>
@@ -92,7 +92,7 @@ export default function OrderSuccess() {
         transition={{ duration: 1, delay: 0.8 }}
         className="mt-16 flex items-center text-sm font-medium text-gray-500 bg-white px-6 py-3 rounded-full shadow-sm border border-gray-100"
       >
-        <Package className="h-5 w-5 mr-2 text-orange-500" />
+        <Package className="h-5 w-5 mr-2 text-brand" />
         Your packaging is being prepared with care.
       </motion.div>
     </div>

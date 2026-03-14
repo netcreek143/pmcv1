@@ -105,7 +105,7 @@ export default function Checkout() {
           email: formData.email,
           contact: formData.phone
         },
-        theme: { color: '#ea580c' }
+        theme: { color: '#e4a5a5' }
       };
 
       const razorpay = new (window as any).Razorpay(options);
@@ -124,7 +124,7 @@ export default function Checkout() {
         <p className="text-gray-500 mb-8 text-center max-w-md">Add some items to your cart before proceeding to checkout.</p>
         <Link 
           to="/shop"
-          className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition-colors shadow-lg hover:-translate-y-1"
+          className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-brand transition-colors shadow-lg hover:-translate-y-1"
         >
           Continue Shopping
         </Link>
@@ -224,7 +224,7 @@ export default function Checkout() {
                   <input 
                     type="email" name="email" required
                     value={formData.email} onChange={handleInputChange}
-                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all font-medium"
+                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all font-medium"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -242,7 +242,7 @@ export default function Checkout() {
                     <input 
                       type="text" name="firstName" required
                       value={formData.firstName} onChange={handleInputChange}
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all font-medium"
                     />
                   </div>
                   <div>
@@ -250,7 +250,7 @@ export default function Checkout() {
                     <input 
                       type="text" name="lastName" required
                       value={formData.lastName} onChange={handleInputChange}
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all font-medium"
                     />
                   </div>
                   <div className="col-span-2">
@@ -258,7 +258,7 @@ export default function Checkout() {
                     <input 
                       type="text" name="address" required
                       value={formData.address} onChange={handleInputChange}
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all font-medium"
                       placeholder="Street address, apartment, suite, etc."
                     />
                   </div>
@@ -267,7 +267,7 @@ export default function Checkout() {
                     <input 
                       type="text" name="city" required
                       value={formData.city} onChange={handleInputChange}
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all font-medium"
                     />
                   </div>
                   <div className="col-span-2 sm:col-span-1">
@@ -275,7 +275,7 @@ export default function Checkout() {
                     <input 
                       type="text" name="state" required
                       value={formData.state} onChange={handleInputChange}
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all font-medium"
                     />
                   </div>
                   <div className="col-span-2 sm:col-span-1">
@@ -283,7 +283,7 @@ export default function Checkout() {
                     <input 
                       type="text" name="pincode" required
                       value={formData.pincode} onChange={handleInputChange}
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all font-medium"
                     />
                   </div>
                   <div className="col-span-2 sm:col-span-1">
@@ -291,7 +291,7 @@ export default function Checkout() {
                     <input 
                       type="tel" name="phone" required
                       value={formData.phone} onChange={handleInputChange}
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all font-medium"
                     />
                   </div>
                 </div>
@@ -306,7 +306,7 @@ export default function Checkout() {
                 
                 <div className="space-y-4">
                   <div 
-                    className={`border-2 rounded-xl p-5 flex items-center cursor-pointer transition-colors ${paymentMethod === 'cod' ? 'bg-orange-50 border-orange-200' : 'border-gray-200 hover:border-orange-200'}`}
+                    className={`border-2 rounded-xl p-5 flex items-center cursor-pointer transition-colors ${paymentMethod === 'cod' ? 'bg-brand-light border-brand' : 'border-gray-200 hover:border-brand'}`}
                     onClick={() => setPaymentMethod('cod')}
                   >
                     <input 
@@ -315,7 +315,7 @@ export default function Checkout() {
                       name="payment" 
                       checked={paymentMethod === 'cod'} 
                       onChange={() => setPaymentMethod('cod')}
-                      className="h-5 w-5 text-orange-600 focus:ring-orange-500" 
+                      className="h-5 w-5 text-brand focus:ring-brand" 
                     />
                     <label htmlFor="cod" className="ml-4 flex-1 cursor-pointer">
                       <span className="block text-base font-bold text-gray-900">Cash on Delivery (COD)</span>
@@ -325,7 +325,7 @@ export default function Checkout() {
 
                   {(import.meta as any).env.VITE_STRIPE_PUBLISHABLE_KEY && (
                     <div 
-                      className={`border-2 rounded-xl p-5 flex items-center cursor-pointer transition-colors ${paymentMethod === 'card' ? 'bg-orange-50 border-orange-200' : 'border-gray-200 hover:border-orange-200'}`}
+                      className={`border-2 rounded-xl p-5 flex items-center cursor-pointer transition-colors ${paymentMethod === 'card' ? 'bg-brand-light border-brand' : 'border-gray-200 hover:border-brand'}`}
                       onClick={() => setPaymentMethod('card')}
                     >
                       <input 
@@ -334,7 +334,7 @@ export default function Checkout() {
                         name="payment" 
                         checked={paymentMethod === 'card'} 
                         onChange={() => setPaymentMethod('card')}
-                        className="h-5 w-5 text-orange-600 focus:ring-orange-500" 
+                        className="h-5 w-5 text-brand focus:ring-brand" 
                       />
                       <label htmlFor="card" className="ml-4 flex-1 cursor-pointer">
                         <span className="block text-base font-bold text-gray-900">Credit / Debit Card</span>
@@ -344,7 +344,7 @@ export default function Checkout() {
                   )}
 
                   <div 
-                    className={`border-2 rounded-xl p-5 flex items-center cursor-pointer transition-colors ${paymentMethod === 'razorpay' ? 'bg-orange-50 border-orange-200' : 'border-gray-200 hover:border-orange-200'}`}
+                    className={`border-2 rounded-xl p-5 flex items-center cursor-pointer transition-colors ${paymentMethod === 'razorpay' ? 'bg-brand-light border-brand' : 'border-gray-200 hover:border-brand'}`}
                     onClick={() => setPaymentMethod('razorpay')}
                   >
                     <input 
@@ -353,7 +353,7 @@ export default function Checkout() {
                       name="payment" 
                       checked={paymentMethod === 'razorpay'} 
                       onChange={() => setPaymentMethod('razorpay')}
-                      className="h-5 w-5 text-orange-600 focus:ring-orange-500" 
+                      className="h-5 w-5 text-brand focus:ring-brand" 
                     />
                     <label htmlFor="razorpay" className="ml-4 flex-1 cursor-pointer">
                       <span className="block text-base font-bold text-gray-900">Razorpay</span>
@@ -380,7 +380,7 @@ export default function Checkout() {
                 <button 
                   type="submit" 
                   disabled={loading}
-                  className="w-full bg-gray-900 text-white py-5 rounded-full font-bold text-xl hover:bg-orange-600 transition-all duration-300 disabled:bg-gray-400 flex justify-center items-center shadow-lg hover:shadow-xl hover:-translate-y-1"
+                  className="w-full bg-gray-900 text-white py-5 rounded-full font-bold text-xl hover:bg-brand transition-all duration-300 disabled:bg-gray-400 flex justify-center items-center shadow-lg hover:shadow-xl hover:-translate-y-1"
                 >
                   {loading ? (
                     <span className="flex items-center">
@@ -451,14 +451,14 @@ export default function Checkout() {
 
               <div className="mt-10 pt-8 border-t border-gray-100 space-y-4">
                 <div className="flex items-center text-sm font-medium text-gray-600">
-                  <div className="h-10 w-10 rounded-full bg-orange-50 flex items-center justify-center mr-3">
-                    <Truck className="h-5 w-5 text-orange-600" />
+                  <div className="h-10 w-10 rounded-full bg-brand-light flex items-center justify-center mr-3">
+                    <Truck className="h-5 w-5 text-brand" />
                   </div>
                   Free shipping on all orders
                 </div>
                 <div className="flex items-center text-sm font-medium text-gray-600">
-                  <div className="h-10 w-10 rounded-full bg-orange-50 flex items-center justify-center mr-3">
-                    <ShieldCheck className="h-5 w-5 text-orange-600" />
+                  <div className="h-10 w-10 rounded-full bg-brand-light flex items-center justify-center mr-3">
+                    <ShieldCheck className="h-5 w-5 text-brand" />
                   </div>
                   100% secure checkout
                 </div>

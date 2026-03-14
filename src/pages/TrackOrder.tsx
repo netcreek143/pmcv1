@@ -57,12 +57,12 @@ export default function TrackOrder() {
                 placeholder="Enter Order ID (e.g. #12345678)"
                 value={orderId}
                 onChange={(e) => setOrderId(e.target.value)}
-                className="flex-1 px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none transition-all font-bold"
+                className="flex-1 px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-brand outline-none transition-all font-bold"
               />
               <button 
                 type="submit"
                 disabled={loading}
-                className="bg-orange-600 text-white px-10 py-4 rounded-2xl font-bold uppercase tracking-widest hover:bg-orange-700 transition-all shadow-lg shadow-orange-200 disabled:opacity-50"
+                className="bg-brand text-white px-10 py-4 rounded-2xl font-bold uppercase tracking-widest hover:bg-brand-dark transition-all shadow-lg shadow-brand-light disabled:opacity-50"
               >
                 {loading ? 'Tracking...' : 'Track'}
               </button>
@@ -90,7 +90,7 @@ export default function TrackOrder() {
               <div className="relative">
                 <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 z-0"></div>
                 <div 
-                  className="absolute top-1/2 left-0 h-1 bg-orange-600 -translate-y-1/2 z-0 transition-all duration-1000"
+                  className="absolute top-1/2 left-0 h-1 bg-brand -translate-y-1/2 z-0 transition-all duration-1000"
                   style={{ width: `${(currentStepIndex / (steps.length - 1)) * 100}%` }}
                 ></div>
                 
@@ -103,8 +103,8 @@ export default function TrackOrder() {
                     return (
                       <div key={step.status} className="flex flex-col items-center">
                         <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
-                          isCompleted ? 'bg-orange-600 text-white shadow-lg shadow-orange-200' : 'bg-white border-2 border-gray-200 text-gray-300'
-                        } ${isCurrent ? 'ring-4 ring-orange-100' : ''}`}>
+                          isCompleted ? 'bg-brand text-white shadow-lg shadow-brand-light' : 'bg-white border-2 border-gray-200 text-gray-300'
+                        } ${isCurrent ? 'ring-4 ring-brand-light' : ''}`}>
                           <Icon className="h-6 w-6" />
                         </div>
                         <span className={`mt-4 text-xs font-bold uppercase tracking-wider ${
@@ -129,7 +129,7 @@ export default function TrackOrder() {
                   ))}
                   <div className="pt-4 flex justify-between border-t border-gray-100">
                     <span className="font-bold text-gray-900">Total</span>
-                    <span className="font-extrabold text-orange-600 text-lg">₹{order.totalAmount.toFixed(2)}</span>
+                    <span className="font-extrabold text-brand text-lg">₹{order.totalAmount.toFixed(2)}</span>
                   </div>
                 </div>
               </div>

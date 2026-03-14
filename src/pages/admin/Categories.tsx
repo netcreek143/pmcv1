@@ -160,7 +160,7 @@ export default function AdminCategories() {
         <h2 className="text-2xl font-bold text-gray-900">Categories</h2>
         <button 
           onClick={() => handleOpenModal()}
-          className="bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center hover:bg-orange-700 transition-colors"
+          className="bg-brand text-white px-4 py-2 rounded-lg flex items-center hover:bg-brand-dark transition-colors"
         >
           <Plus className="h-5 w-5 mr-2" />
           Add Category
@@ -176,7 +176,7 @@ export default function AdminCategories() {
               placeholder="Search categories..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none"
             />
           </div>
         </div>
@@ -247,7 +247,7 @@ export default function AdminCategories() {
                   type="text" required
                   value={formData.name}
                   onChange={e => setFormData({...formData, name: e.target.value, slug: e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-')})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand outline-none"
                 />
               </div>
               <div>
@@ -256,7 +256,7 @@ export default function AdminCategories() {
                   type="text" required
                   value={formData.slug}
                   onChange={e => setFormData({...formData, slug: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand outline-none"
                 />
               </div>
               <div>
@@ -265,7 +265,7 @@ export default function AdminCategories() {
                   rows={3}
                   value={formData.description}
                   onChange={e => setFormData({...formData, description: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand outline-none"
                 />
               </div>
 
@@ -279,7 +279,7 @@ export default function AdminCategories() {
                 </button>
                 <button 
                   type="submit"
-                  className="px-4 py-2 text-white bg-orange-600 hover:bg-orange-700 rounded-lg font-medium transition-colors"
+                  className="px-4 py-2 text-white bg-brand hover:bg-brand-dark rounded-lg font-medium transition-colors"
                 >
                   {editingCategory ? 'Save Changes' : 'Add Category'}
                 </button>

@@ -34,9 +34,9 @@ export default function About() {
               <li><strong>Fast Delivery:</strong> We know the baking business moves fast, and so do we.</li>
             </ul>
 
-            <div className="mt-16 p-8 bg-orange-50 rounded-3xl border border-orange-100">
-              <h3 className="text-xl font-bold text-orange-900 mb-2">Our Vision</h3>
-              <p className="text-orange-800 italic">
+            <div className="mt-16 p-8 bg-brand-light rounded-3xl border border-brand-light">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Our Vision</h3>
+              <p className="text-gray-800 italic">
                 "To be the most trusted partner for every baker in India, providing packaging that turns every delivery into a delightful experience."
               </p>
             </div>

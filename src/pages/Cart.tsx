@@ -38,7 +38,7 @@ export default function Cart() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Link to="/shop" className="inline-flex items-center px-8 py-4 border border-transparent text-base font-bold rounded-full shadow-lg text-white bg-gray-900 hover:bg-orange-600 hover:-translate-y-1 transition-all duration-300">
+          <Link to="/shop" className="inline-flex items-center px-8 py-4 border border-transparent text-base font-bold rounded-full shadow-lg text-white bg-gray-900 hover:bg-brand hover:-translate-y-1 transition-all duration-300">
             Continue Shopping
           </Link>
         </motion.div>
@@ -76,7 +76,7 @@ export default function Cart() {
                       <div className="sm:ml-8 flex-1 flex flex-col justify-between w-full h-full">
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="text-xl font-bold text-gray-900 hover:text-orange-600 transition-colors">
+                            <h3 className="text-xl font-bold text-gray-900 hover:text-brand transition-colors">
                               <Link to={`/product/${item.id}`}>{item.name}</Link>
                             </h3>
                             <p className="mt-2 text-sm font-medium text-gray-500">₹{item.price.toFixed(2)} / unit</p>
@@ -90,7 +90,7 @@ export default function Cart() {
                           <div className="flex items-center border-2 border-gray-200 rounded-full h-12 w-32 bg-white">
                             <button 
                               onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
-                              className="px-4 text-gray-500 hover:text-orange-600 transition-colors h-full flex items-center justify-center"
+                              className="px-4 text-gray-500 hover:text-brand transition-colors h-full flex items-center justify-center"
                             >
                               <Minus className="h-4 w-4" />
                             </button>
@@ -102,7 +102,7 @@ export default function Cart() {
                             />
                             <button 
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="px-4 text-gray-500 hover:text-orange-600 transition-colors h-full flex items-center justify-center"
+                              className="px-4 text-gray-500 hover:text-brand transition-colors h-full flex items-center justify-center"
                             >
                               <Plus className="h-4 w-4" />
                             </button>
@@ -151,7 +151,7 @@ export default function Cart() {
               </div>
 
               <div className="mt-8">
-                <Link to="/checkout" className="w-full flex justify-center items-center px-6 py-4 border border-transparent rounded-full shadow-lg text-lg font-bold text-white bg-gray-900 hover:bg-orange-600 hover:-translate-y-1 transition-all duration-300">
+                <Link to="/checkout" className="w-full flex justify-center items-center px-6 py-4 border border-transparent rounded-full shadow-lg text-lg font-bold text-white bg-gray-900 hover:bg-brand hover:-translate-y-1 transition-all duration-300">
                   Proceed to Checkout
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -160,7 +160,7 @@ export default function Cart() {
               <div className="mt-6 text-center text-sm text-gray-500">
                 <p>
                   or{' '}
-                  <Link to="/shop" className="text-orange-600 font-bold hover:text-orange-700 transition-colors">
+                  <Link to="/shop" className="text-brand font-bold hover:text-brand-dark transition-colors">
                     Continue Shopping<span aria-hidden="true"> &rarr;</span>
                   </Link>
                 </p>
@@ -173,7 +173,7 @@ export default function Cart() {
                   Secure Checkout
                 </div>
                 <div className="flex items-center text-sm font-medium text-gray-600">
-                  <Truck className="h-5 w-5 text-orange-500 mr-3" />
+                  <Truck className="h-5 w-5 text-brand mr-3" />
                   Free shipping on orders over ₹2000
                 </div>
               </div>

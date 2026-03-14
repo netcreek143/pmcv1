@@ -18,30 +18,30 @@ export default function Bulk() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="p-8 bg-gray-50 rounded-3xl border border-gray-100">
-              <Truck className="h-10 w-10 text-orange-600 mb-6" />
+              <Truck className="h-10 w-10 text-brand mb-6" />
               <h3 className="text-xl font-bold text-gray-900 mb-4">Priority Shipping</h3>
               <p className="text-gray-600">Bulk orders get priority processing and specialized logistics handling.</p>
             </div>
             <div className="p-8 bg-gray-50 rounded-3xl border border-gray-100">
-              <ShieldCheck className="h-10 w-10 text-orange-600 mb-6" />
+              <ShieldCheck className="h-10 w-10 text-brand mb-6" />
               <h3 className="text-xl font-bold text-gray-900 mb-4">Quality Assurance</h3>
               <p className="text-gray-600">Every batch undergoes rigorous quality checks before dispatch.</p>
             </div>
             <div className="p-8 bg-gray-50 rounded-3xl border border-gray-100">
-              <Zap className="h-10 w-10 text-orange-600 mb-6" />
+              <Zap className="h-10 w-10 text-brand mb-6" />
               <h3 className="text-xl font-bold text-gray-900 mb-4">Tiered Pricing</h3>
               <p className="text-gray-600">The more you buy, the more you save with our volume-based discounts.</p>
             </div>
           </div>
 
-          <div className="bg-orange-600 rounded-3xl p-12 text-white">
+          <div className="bg-brand rounded-3xl p-12 text-white">
             <h2 className="text-3xl font-bold mb-6">Get a Custom Quote</h2>
-            <p className="text-orange-100 mb-8 max-w-2xl text-lg">
+            <p className="text-brand-light mb-8 max-w-2xl text-lg">
               Tell us about your requirements, and our wholesale team will get back to you with a competitive quote within 24 hours.
             </p>
             <a 
               href="mailto:wholesale@packmycake.com" 
-              className="inline-block bg-white text-orange-600 px-10 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-orange-50 transition-colors shadow-xl"
+              className="inline-block bg-white text-brand px-10 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-brand-light transition-colors shadow-xl"
             >
               Email Wholesale Team
             </a>

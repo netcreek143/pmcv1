@@ -61,11 +61,11 @@ export default function AdminCustomers() {
               placeholder="Search customers..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none"
             />
           </div>
           <div className="flex space-x-2">
-            <select className="border border-gray-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-orange-500">
+            <select className="border border-gray-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-brand">
               <option value="all">All Customers</option>
               <option value="active">Active (Ordered in last 30 days)</option>
               <option value="inactive">Inactive</option>
@@ -98,7 +98,7 @@ export default function AdminCustomers() {
                   <tr key={customer.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center">
-                        <div className="h-10 w-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold mr-3">
+                        <div className="h-10 w-10 rounded-full bg-brand-light flex items-center justify-center text-brand-dark font-bold mr-3">
                           {(customer.name || customer.email).charAt(0).toUpperCase()}
                         </div>
                         <div>

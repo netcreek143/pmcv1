@@ -52,7 +52,7 @@ export default function FAQ() {
             <p className="text-gray-500 mb-4">Still have questions?</p>
             <a 
               href="/contact" 
-              className="inline-block bg-orange-600 text-white px-8 py-3 rounded-full font-bold hover:bg-orange-700 transition-colors"
+              className="inline-block bg-brand text-white px-8 py-3 rounded-full font-bold hover:bg-brand-dark transition-colors"
             >
               Contact Support
             </a>

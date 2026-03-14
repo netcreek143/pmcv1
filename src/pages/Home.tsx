@@ -70,12 +70,12 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" as const }}
               className="z-10"
             >
-              <span className="inline-block py-1.5 px-4 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-6">
+              <span className="inline-block py-1.5 px-4 rounded-full bg-brand-light text-brand-dark text-xs font-bold tracking-wider uppercase mb-6">
                 Premium Bakery Packaging
               </span>
               <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-[1.1]">
                 Elevate Your <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-brand-dark">
                   Bakes & Cakes
                 </span>
               </h1>
@@ -83,7 +83,7 @@ export default function Home() {
                 High-quality, sturdy, and beautiful packaging solutions designed specifically for professional bakers and confectioneries.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/shop" className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-gray-900 hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                <Link to="/shop" className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-gray-900 hover:bg-brand transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
                   Shop Collection
                 </Link>
                 <Link to="/bulk" className="inline-flex justify-center items-center px-8 py-4 border-2 border-gray-200 text-base font-bold rounded-full text-gray-900 bg-transparent hover:border-gray-900 transition-all duration-300">
@@ -127,8 +127,8 @@ export default function Home() {
               { icon: Star, title: "Top Rated", desc: "Trusted by 10,000+ bakers" }
             ].map((feature, idx) => (
               <motion.div key={idx} variants={itemVariants} className="flex flex-col items-center group">
-                <div className="h-16 w-16 rounded-2xl bg-orange-50 flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
-                  <feature.icon className="h-8 w-8 text-orange-600" />
+                <div className="h-16 w-16 rounded-2xl bg-brand-light flex items-center justify-center mb-4 group-hover:bg-brand-light/70 transition-colors duration-300">
+                  <feature.icon className="h-8 w-8 text-brand" />
                 </div>
                 <h3 className="font-bold text-gray-900 text-lg">{feature.title}</h3>
                 <p className="text-sm text-gray-500 mt-1 font-medium">{feature.desc}</p>
@@ -146,7 +146,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">Trending Now</h2>
               <p className="mt-3 text-lg text-gray-600">Our most popular packaging solutions this week.</p>
             </div>
-            <Link to="/shop" className="hidden sm:flex items-center text-orange-600 font-bold hover:text-orange-700 transition-colors group">
+            <Link to="/shop" className="hidden sm:flex items-center text-brand font-bold hover:text-brand-dark transition-colors group">
               View All Products <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -182,6 +182,7 @@ export default function Home() {
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         referrerPolicy="no-referrer"
                       />
+                      <div className="absolute inset-0 bg-brand/50 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-60"></div>
                       {product.compareAtPrice && (
                         <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                           Sale
@@ -199,7 +200,7 @@ export default function Home() {
                               quantity: 1
                             });
                           }}
-                          className="bg-white text-gray-900 font-bold py-3 px-6 rounded-full w-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors shadow-lg"
+                          className="bg-white text-gray-900 font-bold py-3 px-6 rounded-full w-full flex items-center justify-center hover:bg-brand hover:text-white transition-colors shadow-lg"
                         >
                           <ShoppingBag className="h-4 w-4 mr-2" /> Add to Cart
                         </button>
@@ -207,7 +208,7 @@ export default function Home() {
                     </Link>
                     <div className="flex flex-col flex-grow">
                       <div className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">{product.category.name}</div>
-                      <Link to={`/product/${product.slug}`} className="text-lg font-bold text-gray-900 hover:text-orange-600 transition-colors line-clamp-2 mb-2">
+                      <Link to={`/product/${product.slug}`} className="text-lg font-bold text-gray-900 hover:text-brand transition-colors line-clamp-2 mb-2">
                         {product.name}
                       </Link>
                       <div className="mt-auto flex items-center gap-2">
@@ -254,7 +255,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                   <div className="absolute bottom-0 left-0 p-8 w-full">
                     <h3 className="text-2xl font-bold text-white mb-2">{category.name}</h3>
-                    <span className="inline-flex items-center text-sm font-bold text-white/90 group-hover:text-orange-400 transition-colors">
+                    <span className="inline-flex items-center text-sm font-bold text-white/90 group-hover:text-brand transition-colors">
                       Explore Collection <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-2 transition-transform" />
                     </span>
                   </div>

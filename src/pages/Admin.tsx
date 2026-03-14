@@ -40,7 +40,7 @@ const Overview = () => {
   const statCards = [
     { name: 'Total Sales', value: `₹${stats?.totalSales?.toLocaleString() || 0}`, icon: TrendingUp, color: 'text-green-600', bg: 'bg-green-50' },
     { name: 'Total Orders', value: stats?.totalOrders || 0, icon: ShoppingCart, color: 'text-blue-600', bg: 'bg-blue-50' },
-    { name: 'Products', value: stats?.totalProducts || 0, icon: Box, color: 'text-orange-600', bg: 'bg-orange-50' },
+    { name: 'Products', value: stats?.totalProducts || 0, icon: Box, color: 'text-brand', bg: 'bg-brand-light' },
     { name: 'Customers', value: stats?.totalCustomers || 0, icon: UserCheck, color: 'text-purple-600', bg: 'bg-purple-50' },
   ];
 
@@ -64,7 +64,7 @@ const Overview = () => {
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-6 border-b border-gray-100 flex justify-between items-center">
           <h3 className="text-lg font-bold text-gray-900">Recent Orders</h3>
-          <Link to="/admin/orders" className="text-orange-600 text-sm font-bold hover:text-orange-700 transition-colors">View All</Link>
+          <Link to="/admin/orders" className="text-brand text-sm font-bold hover:text-brand-dark transition-colors">View All</Link>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left">
@@ -77,8 +77,8 @@ const Overview = () => {
                 <th className="px-6 py-4">Date</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
-              {recentOrders.map((order) => (
+             <tbody className="divide-y divide-gray-100">
+              {Array.isArray(recentOrders) && recentOrders.map((order) => (
                 <tr key={order.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4 text-sm font-bold text-gray-900">#{order.id.slice(-8).toUpperCase()}</td>
                   <td className="px-6 py-4 text-sm text-gray-600">{order.user.name}</td>
@@ -121,7 +121,7 @@ export default function Admin() {
       <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
         <div className="h-20 flex items-center px-6 border-b border-gray-200">
           <span className="text-xl font-bold tracking-tighter text-gray-900">PACK MY CAKE</span>
-          <span className="ml-2 px-2 py-0.5 bg-orange-100 text-orange-800 text-xs font-semibold rounded">ADMIN</span>
+          <span className="ml-2 px-2 py-0.5 bg-brand-light text-brand-dark text-xs font-semibold rounded">ADMIN</span>
         </div>
         
         <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
@@ -134,11 +134,11 @@ export default function Admin() {
                 to={item.path}
                 className={`flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors ${
                   isActive 
-                    ? 'bg-orange-50 text-orange-600' 
+                    ? 'bg-brand-light text-brand-dark' 
                     : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                 }`}
               >
-                <Icon className={`mr-3 h-5 w-5 ${isActive ? 'text-orange-500' : 'text-gray-400'}`} />
+                <Icon className={`mr-3 h-5 w-5 ${isActive ? 'text-brand' : 'text-gray-400'}`} />
                 {item.name}
               </Link>
             );

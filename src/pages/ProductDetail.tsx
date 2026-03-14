@@ -42,7 +42,7 @@ export default function ProductDetail() {
     return (
       <div className="min-h-screen bg-[#fdfbf7] flex items-center justify-center">
         <div className="animate-pulse flex flex-col items-center">
-          <div className="h-12 w-12 border-4 border-orange-200 border-t-orange-600 rounded-full animate-spin mb-4"></div>
+          <div className="h-12 w-12 border-4 border-brand-light border-t-brand rounded-full animate-spin mb-4"></div>
           <p className="text-gray-500 font-medium">Loading product details...</p>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function ProductDetail() {
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Product not found</h2>
           <p className="text-gray-500 mb-6">The product you're looking for doesn't exist or has been removed.</p>
-          <Link to="/shop" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-orange-600 transition-colors">
+          <Link to="/shop" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-brand transition-colors">
             Back to Shop
           </Link>
         </div>
@@ -117,7 +117,7 @@ export default function ProductDetail() {
                     key={idx} 
                     onClick={() => setActiveImage(idx)}
                     className={`w-20 h-24 md:w-24 md:h-28 rounded-xl overflow-hidden border-2 flex-shrink-0 transition-all duration-200 ${
-                      activeImage === idx ? 'border-orange-500 shadow-md' : 'border-transparent hover:border-gray-300 opacity-70 hover:opacity-100'
+                      activeImage === idx ? 'border-brand shadow-md' : 'border-transparent hover:border-gray-300 opacity-70 hover:opacity-100'
                     }`}
                   >
                     <img src={img} alt={`${product.name} thumbnail ${idx + 1}`} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
@@ -150,7 +150,7 @@ export default function ProductDetail() {
             className="flex flex-col"
           >
             <div className="mb-2 flex items-center justify-between">
-              <span className="text-sm font-bold text-orange-600 uppercase tracking-wider">{product.category?.name}</span>
+              <span className="text-sm font-bold text-brand uppercase tracking-wider">{product.category?.name}</span>
               <div className="flex items-center space-x-2">
                 <button className="text-gray-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50">
                   <Heart className="h-5 w-5" />
@@ -189,7 +189,7 @@ export default function ProductDetail() {
               <div className="flex items-center border-2 border-gray-200 rounded-full h-14 w-36 bg-white">
                 <button 
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 text-gray-500 hover:text-orange-600 transition-colors h-full flex items-center justify-center"
+                  className="px-4 text-gray-500 hover:text-brand transition-colors h-full flex items-center justify-center"
                 >
                   <Minus className="h-5 w-5" />
                 </button>
@@ -201,7 +201,7 @@ export default function ProductDetail() {
                 />
                 <button 
                   onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 text-gray-500 hover:text-orange-600 transition-colors h-full flex items-center justify-center"
+                  className="px-4 text-gray-500 hover:text-brand transition-colors h-full flex items-center justify-center"
                 >
                   <Plus className="h-5 w-5" />
                 </button>
@@ -212,7 +212,7 @@ export default function ProductDetail() {
                 className={`flex-1 h-14 rounded-full font-bold text-lg transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl ${
                   isAdded 
                     ? 'bg-green-500 text-white hover:bg-green-600' 
-                    : 'bg-gray-900 text-white hover:bg-orange-600 hover:-translate-y-1'
+                    : 'bg-gray-900 text-white hover:bg-brand hover:-translate-y-1'
                 }`}
               >
                 <ShoppingBag className="h-5 w-5 mr-3" />
@@ -223,38 +223,38 @@ export default function ProductDetail() {
             {/* Trust Badges */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 py-8 border-y border-gray-200 mb-10">
               <div className="flex items-center text-sm font-medium text-gray-700">
-                <div className="h-10 w-10 rounded-full bg-orange-50 flex items-center justify-center mr-3">
-                  <Truck className="h-5 w-5 text-orange-600" />
+                <div className="h-10 w-10 rounded-full bg-brand-light flex items-center justify-center mr-3">
+                  <Truck className="h-5 w-5 text-brand" />
                 </div>
                 Free shipping over ₹2000
               </div>
               <div className="flex items-center text-sm font-medium text-gray-700">
-                <div className="h-10 w-10 rounded-full bg-orange-50 flex items-center justify-center mr-3">
-                  <ShieldCheck className="h-5 w-5 text-orange-600" />
+                <div className="h-10 w-10 rounded-full bg-brand-light flex items-center justify-center mr-3">
+                  <ShieldCheck className="h-5 w-5 text-brand" />
                 </div>
                 100% Secure Payment
               </div>
               <div className="flex items-center text-sm font-medium text-gray-700">
-                <div className="h-10 w-10 rounded-full bg-orange-50 flex items-center justify-center mr-3">
-                  <RotateCcw className="h-5 w-5 text-orange-600" />
+                <div className="h-10 w-10 rounded-full bg-brand-light flex items-center justify-center mr-3">
+                  <RotateCcw className="h-5 w-5 text-brand" />
                 </div>
                 7 Days Return Policy
               </div>
               <div className="flex items-center text-sm font-medium text-gray-700">
-                <div className="h-10 w-10 rounded-full bg-orange-50 flex items-center justify-center mr-3">
-                  <Package className="h-5 w-5 text-orange-600" />
+                <div className="h-10 w-10 rounded-full bg-brand-light flex items-center justify-center mr-3">
+                  <Package className="h-5 w-5 text-brand" />
                 </div>
                 Premium Food Grade
               </div>
             </div>
 
             {/* Bulk Order CTA */}
-            <div className="bg-gradient-to-r from-orange-50 to-pink-50 rounded-2xl p-8 border border-orange-100 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-orange-200 rounded-full opacity-50 blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+            <div className="bg-gradient-to-r from-brand-light to-pink-50 rounded-2xl p-8 border border-brand-light relative overflow-hidden group">
+              <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-brand-light rounded-full opacity-50 blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
               <div className="relative z-10">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Need this in bulk?</h3>
                 <p className="text-gray-600 mb-6 font-medium">Get special wholesale pricing for orders above 500 units. Perfect for bakeries and cafes.</p>
-                <Link to="/bulk" className="inline-flex items-center px-6 py-3 bg-white text-orange-600 font-bold rounded-full border border-orange-200 hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-300 shadow-sm hover:shadow-md">
+                <Link to="/bulk" className="inline-flex items-center px-6 py-3 bg-white text-brand font-bold rounded-full border border-brand-light hover:bg-brand hover:text-white hover:border-brand transition-all duration-300 shadow-sm hover:shadow-md">
                   Request Wholesale Quote <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>

@@ -48,7 +48,7 @@ async function startServer() {
       res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Internal server error", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
@@ -67,7 +67,7 @@ async function startServer() {
       res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Internal server error", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
@@ -156,7 +156,7 @@ async function startServer() {
       res.json(products);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Internal server error", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
@@ -166,7 +166,7 @@ async function startServer() {
       res.json(categories);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Internal server error", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
@@ -221,7 +221,7 @@ async function startServer() {
       res.json(product);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Internal server error", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
@@ -305,7 +305,7 @@ async function startServer() {
       });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Internal server error", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
@@ -429,9 +429,11 @@ async function startServer() {
       if (!order) return res.status(404).json({ error: "Order not found" });
       
       const invoice = generateInvoice(order);
+      console.log(`Generated invoice for order ${order.id}, size: ${invoice.byteLength} bytes`);
       res.setHeader('Content-Type', 'application/pdf');
       res.setHeader('Content-Disposition', `attachment; filename=invoice-${order.id}.pdf`);
-      res.send(Buffer.from(await invoice.arrayBuffer()));
+      res.setHeader('Content-Length', invoice.byteLength);
+      res.send(Buffer.from(invoice));
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Failed to generate invoice" });
@@ -578,7 +580,7 @@ async function startServer() {
       res.json(orders);
     } catch (error) {
       console.error("Failed to fetch orders:", error);
-      res.status(500).json({ error: "Failed to fetch orders" });
+      res.status(500).json({ error: "Failed to fetch orders", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
@@ -662,7 +664,7 @@ async function startServer() {
       });
     } catch (error) {
       console.error("Failed to fetch admin stats:", error);
-      res.status(500).json({ error: "Failed to fetch stats" });
+      res.status(500).json({ error: "Failed to fetch stats", details: error instanceof Error ? error.message : String(error) });
     }
   });
 

@@ -19,8 +19,8 @@ export default function Custom() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
             <div className="space-y-8">
               <div className="flex items-start">
-                <div className="p-3 bg-orange-50 rounded-xl mr-4">
-                  <Palette className="h-6 w-6 text-orange-600" />
+                <div className="p-3 bg-brand-light rounded-xl mr-4">
+                  <Palette className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Branded Printing</h3>
@@ -28,8 +28,8 @@ export default function Custom() {
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="p-3 bg-orange-50 rounded-xl mr-4">
-                  <Scissors className="h-6 w-6 text-orange-600" />
+                <div className="p-3 bg-brand-light rounded-xl mr-4">
+                  <Scissors className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Custom Dimensions</h3>
@@ -37,8 +37,8 @@ export default function Custom() {
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="p-3 bg-orange-50 rounded-xl mr-4">
-                  <CheckCircle className="h-6 w-6 text-orange-600" />
+                <div className="p-3 bg-brand-light rounded-xl mr-4">
+                  <CheckCircle className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Low Minimums</h3>
@@ -67,7 +67,7 @@ export default function Custom() {
             </p>
             <a 
               href="/contact" 
-              className="inline-block bg-orange-600 text-white px-10 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-orange-700 transition-colors shadow-xl"
+              className="inline-block bg-brand text-white px-10 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-brand-dark transition-colors shadow-xl"
             >
               Request a Consultation
             </a>

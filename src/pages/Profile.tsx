@@ -78,8 +78,8 @@ export default function Profile() {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 sticky top-24">
               <div className="flex flex-col items-center text-center mb-8">
-                <div className="w-24 h-24 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                  <UserIcon className="h-12 w-12 text-orange-600" />
+                <div className="w-24 h-24 bg-brand-light rounded-full flex items-center justify-center mb-4">
+                  <UserIcon className="h-12 w-12 text-brand" />
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">{user.name}</h2>
                 <p className="text-gray-500 text-sm">{user.role}</p>
@@ -97,7 +97,7 @@ export default function Profile() {
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-100">
-                <button className="w-full text-left px-4 py-2 rounded-xl bg-orange-50 text-orange-700 font-bold text-sm transition-colors">
+                <button className="w-full text-left px-4 py-2 rounded-xl bg-brand-light text-brand-dark font-bold text-sm transition-colors">
                   Order History
                 </button>
                 <button className="w-full text-left px-4 py-2 rounded-xl text-gray-600 hover:bg-gray-50 font-bold text-sm transition-colors mt-2">
@@ -117,7 +117,7 @@ export default function Profile() {
 
               {loading ? (
                 <div className="flex justify-center py-12">
-                  <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-orange-600"></div>
+                  <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-brand"></div>
                 </div>
               ) : orders.length === 0 ? (
                 <div className="text-center py-12">
@@ -153,7 +153,7 @@ export default function Profile() {
                             <span className="ml-1.5">{order.status}</span>
                           </span>
                         </div>
-                        <button className="text-orange-600 hover:text-orange-700 transition-colors">
+                        <button className="text-brand hover:text-brand-dark transition-colors">
                           <ChevronRight className="h-6 w-6" />
                         </button>
                       </div>

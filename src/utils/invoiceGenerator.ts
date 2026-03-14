@@ -1,7 +1,8 @@
 import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 
 export const generateInvoice = (order: any) => {
+  // Use a standard font that supports only WinAnsiEncoding
   const doc = new jsPDF();
   
   doc.setFontSize(20);
@@ -20,31 +21,33 @@ export const generateInvoice = (order: any) => {
   doc.text('Pack My Cake', 20, 65);
   
   doc.text('Ship To:', 80, 60);
-  doc.text(`${order.user.name}`, 80, 65);
+  doc.text(`${order.user?.name || 'Guest'}`, 80, 65);
   
   doc.text('Bill To:', 140, 60);
-  doc.text(`${order.user.name}`, 140, 65);
+  doc.text(`${order.user?.name || 'Guest'}`, 140, 65);
   
   doc.line(20, 75, 190, 75);
   
-  const tableData = order.items.map((item: any, index: number) => [
+  const tableData = (order.items || []).map((item: any, index: number) => [
     index + 1,
-    item.product.name,
+    item.product?.name || 'Product',
     '4819',
     item.quantity,
-    item.price.toFixed(2),
-    (item.price * item.quantity).toFixed(2)
+    (item.price || 0).toFixed(2),
+    ((item.price || 0) * item.quantity).toFixed(2)
   ]);
   
-  (doc as any).autoTable({
+  autoTable(doc, {
     startY: 80,
-    head: [['Sr.', 'Product Description', 'HSN', 'Qty', 'Rate (₹)', 'Amount (₹)']],
+    head: [['Sr.', 'Product Description', 'HSN', 'Qty', 'Rate (INR)', 'Amount (INR)']],
     body: tableData,
+    styles: { font: 'helvetica' }
   });
   
   const finalY = (doc as any).lastAutoTable.finalY + 10;
-  doc.text(`Total Taxable: ₹${order.totalAmount.toFixed(2)}`, 140, finalY);
-  doc.text(`Invoice Total: ₹${order.totalAmount.toFixed(2)}`, 140, finalY + 10);
+  doc.text(`Total Taxable: INR ${(order.totalAmount || 0).toFixed(2)}`, 140, finalY);
+  doc.text(`Invoice Total: INR ${(order.totalAmount || 0).toFixed(2)}`, 140, finalY + 10);
   
-  return doc.output('blob');
+  // Use arraybuffer for Node.js compatibility
+  return doc.output('arraybuffer');
 };

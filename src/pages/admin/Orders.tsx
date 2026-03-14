@@ -117,14 +117,14 @@ export default function AdminOrders() {
               placeholder="Search orders..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none"
             />
           </div>
           <div className="flex space-x-2">
             <select 
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="border border-gray-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-orange-500"
+              className="border border-gray-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-brand"
             >
               <option value="all">All Status</option>
               <option value="PENDING">Pending</option>
@@ -223,7 +223,7 @@ export default function AdminOrders() {
                       value={selectedOrder.status}
                       onChange={(e) => updateOrderStatus(selectedOrder.id, e.target.value)}
                       disabled={updatingStatus}
-                      className="border border-gray-300 rounded-lg px-3 py-1 text-sm outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                      className="border border-gray-300 rounded-lg px-3 py-1 text-sm outline-none focus:ring-2 focus:ring-brand disabled:opacity-50"
                     >
                       <option value="PENDING">Pending</option>
                       <option value="PROCESSING">Processing</option>
@@ -235,7 +235,37 @@ export default function AdminOrders() {
                 </div>
               </div>
 
-              <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Order Items</h4>
+              <div className="flex justify-between items-center mb-4">
+                <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Order Items</h4>
+                <button
+                  onClick={async () => {
+                    try {
+                      const res = await fetch(`/api/orders/${selectedOrder.id}/invoice`, {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                      });
+                      if (res.ok) {
+                        const blob = await res.blob();
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `invoice-${selectedOrder.id.substring(0, 8)}.pdf`;
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                      } else {
+                        showToast('Failed to download invoice', 'error');
+                      }
+                    } catch (error) {
+                      console.error('Invoice download error:', error);
+                      showToast('Error downloading invoice', 'error');
+                    }
+                  }}
+                  className="flex items-center text-brand hover:text-brand-dark font-bold text-sm transition-colors"
+                >
+                  <Download className="h-4 w-4 mr-1" />
+                  Download Invoice
+                </button>
+              </div>
               <div className="border border-gray-200 rounded-lg overflow-hidden mb-6">
                 <table className="w-full text-left text-sm">
                   <thead className="bg-gray-50 border-b border-gray-200">
