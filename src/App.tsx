@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useState } from 'react';
 import { BrowserRouter, Routes, Route, Link, useLocation, Navigate, useNavigate } from 'react-router-dom';
-import { ShoppingBag, Menu, User, Search, Package, LogOut } from 'lucide-react';
+import { ShoppingBag, Menu, User, Search, Package, LogOut, X } from 'lucide-react';
 import { useCartStore } from './store/cart';
 import { useAuthStore } from './store/useAuthStore';
 import { motion, AnimatePresence } from 'motion/react';
@@ -60,6 +60,8 @@ const Navbar = () => {
     }
   };
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   // Hide navbar in admin area
   if (location.pathname.startsWith('/admin')) {
     return null;
@@ -70,8 +72,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <div className="flex items-center">
-            <button className="p-2 -ml-2 mr-4 md:hidden text-gray-900 hover:text-brand transition-colors">
-              <Menu className="h-6 w-6" />
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 -ml-2 mr-4 md:hidden text-gray-900 hover:text-brand transition-colors"
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
             <Link to="/" className="flex items-center gap-2 group">
               <div className="bg-gray-900 text-white p-1.5 rounded-lg group-hover:bg-brand transition-colors">
@@ -157,6 +162,38 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, height: 0 }}
+            animate={{ opacity: 1, y: 0, height: 'auto' }}
+            exit={{ opacity: 0, y: -20, height: 0 }}
+            className="md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md shadow-xl border-b border-gray-100 z-40 px-6 py-6 flex flex-col space-y-6 overflow-hidden"
+          >
+            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-gray-900 hover:text-brand transition-colors">Home</Link>
+            <Link to="/shop" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-gray-900 hover:text-brand transition-colors">Shop</Link>
+            <Link to="/categories" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-gray-900 hover:text-brand transition-colors">Categories</Link>
+            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-gray-900 hover:text-brand transition-colors">About Us</Link>
+            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-gray-900 hover:text-brand transition-colors">Contact Support</Link>
+            {user?.role === 'ADMIN' && (
+              <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-brand hover:text-brand-dark transition-colors">Admin Dashboard</Link>
+            )}
+            {!user ? (
+               <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-gray-900 hover:text-brand transition-colors mt-2 pt-6 border-t border-gray-100 flex items-center gap-3">
+                 <div className="bg-gray-100 p-2 rounded-full"><User size={20} className="text-gray-700"/></div>
+                 Login or Register
+               </Link>
+            ) : (
+               <button onClick={() => { logout(); setIsMobileMenuOpen(false); }} className="text-lg font-bold text-gray-900 hover:text-brand transition-colors mt-2 pt-6 border-t border-gray-100 flex items-center gap-3 text-left w-full">
+                 <div className="bg-gray-100 p-2 rounded-full"><LogOut size={20} className="text-gray-700"/></div>
+                 Log out
+               </button>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
@@ -238,14 +275,55 @@ const Footer = () => {
   );
 };
 
+const MobileBottomNav = () => {
+  const location = useLocation();
+  const cartItems = useCartStore(state => state.items);
+  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+  if (location.pathname.startsWith('/admin')) {
+    return null;
+  }
+
+  return (
+    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+      <div className="flex justify-around items-center h-16 px-2">
+        <Link to="/" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/' ? 'text-brand' : 'text-gray-400 hover:text-gray-900'}`}>
+          <Package className="h-5 w-5" />
+          <span className="text-[10px] font-bold uppercase tracking-wider">Home</span>
+        </Link>
+        <Link to="/shop" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/shop' ? 'text-brand' : 'text-gray-400 hover:text-gray-900'}`}>
+          <Search className="h-5 w-5" />
+          <span className="text-[10px] font-bold uppercase tracking-wider">Shop</span>
+        </Link>
+        <Link to="/cart" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors relative ${location.pathname === '/cart' ? 'text-brand' : 'text-gray-400 hover:text-gray-900'}`}>
+          <div className="relative">
+             <ShoppingBag className="h-5 w-5" />
+             {cartCount > 0 && (
+               <span className="absolute -top-1.5 -right-1.5 bg-brand text-white text-[9px] font-bold rounded-full h-4 w-4 flex items-center justify-center border-2 border-white shadow-sm">
+                 {cartCount}
+               </span>
+             )}
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-wider">Cart</span>
+        </Link>
+        <Link to="/profile" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/profile' ? 'text-brand' : 'text-gray-400 hover:text-gray-900'}`}>
+          <User className="h-5 w-5" />
+          <span className="text-[10px] font-bold uppercase tracking-wider">Profile</span>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen flex flex-col font-sans text-gray-900">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pb-16 md:pb-0">
         {children}
       </main>
       <Footer />
+      <MobileBottomNav />
     </div>
   );
 };
