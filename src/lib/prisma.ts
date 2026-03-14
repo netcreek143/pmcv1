@@ -4,6 +4,9 @@ import { PrismaLibSql } from '@prisma/adapter-libsql';
 
 const dbUrl = process.env.DATABASE_URL || 'file:./dev.db';
 
+// Satisfaction for Prisma schema validation which requires a file: protocol for sqlite provider
+process.env.PRISMA_DATABASE_URL = 'file:./dev.db';
+
 let prisma: PrismaClient;
 
 if (dbUrl.startsWith('libsql://')) {
