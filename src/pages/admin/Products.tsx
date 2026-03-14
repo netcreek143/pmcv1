@@ -55,7 +55,13 @@ export default function AdminProducts() {
     try {
       const res = await fetch('/api/products');
       const data = await res.json();
-      setProducts(data);
+      if (Array.isArray(data)) {
+        setProducts(data);
+      } else {
+        console.error('Expected array, got:', data);
+        setProducts([]);
+        showToast('Failed to fetch products', 'error');
+      }
     } catch (error) {
       console.error('Failed to fetch products', error);
       showToast('Failed to fetch products', 'error');
@@ -360,6 +366,34 @@ export default function AdminProducts() {
                 </div>
               </div>
 
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Image Upload</label>
+                <input 
+                  type="file" 
+                  accept="image/*"
+                  onChange={async (e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+                    const formData = new FormData();
+                    formData.append('image', file);
+                    const res = await fetch('/api/upload', {
+                      method: 'POST',
+                      headers: { 'Authorization': `Bearer ${token}` },
+                      body: formData
+                    });
+                    const data = await res.json();
+                    if (res.ok) {
+                      setFormData(prev => ({
+                        ...prev,
+                        images: prev.images ? `${prev.images}, ${data.url}` : data.url
+                      }));
+                    } else {
+                      showToast('Failed to upload image', 'error');
+                    }
+                  }}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+                />
+              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Image URLs (comma separated)</label>
                 <input 

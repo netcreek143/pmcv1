@@ -24,8 +24,12 @@ export default function Home() {
       try {
         const res = await fetch('/api/products');
         const data = await res.json();
-        // Just take the first 4 for featured
-        setFeaturedProducts(data.slice(0, 4));
+        if (Array.isArray(data)) {
+          setFeaturedProducts(data.slice(0, 4));
+        } else {
+          console.error('Expected array, got:', data);
+          setFeaturedProducts([]);
+        }
       } catch (error) {
         console.error('Failed to fetch products', error);
       } finally {

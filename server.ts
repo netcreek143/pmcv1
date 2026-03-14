@@ -2,13 +2,27 @@ import express from "express";
 import { createServer as createViteServer } from "vite";
 import cors from "cors";
 import path from "path";
+import multer from "multer";
 import prisma from "./src/lib/prisma.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Stripe from "stripe";
 import Razorpay from "razorpay";
+import { shiprocketService } from "./src/services/shiprocketService.js";
+import { generateInvoice } from "./src/utils/invoiceGenerator.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
+
+// Multer configuration
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  }
+});
+const upload = multer({ storage });
 
 async function startServer() {
   const app = express();
@@ -16,6 +30,7 @@ async function startServer() {
 
   app.use(cors());
   app.use(express.json());
+  app.use('/uploads', express.static('uploads')); // Serve uploaded files
 
   // Auth routes
   app.post("/api/auth/register", async (req, res) => {
@@ -75,6 +90,29 @@ async function startServer() {
     }
   });
 
+  const isAdmin = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith("Bearer ")) return res.status(401).json({ error: "Unauthorized" });
+    const token = authHeader.split(" ")[1];
+    try {
+      const decoded = jwt.verify(token, JWT_SECRET) as { id: string, role: string };
+      if (decoded.role !== 'ADMIN') {
+        return res.status(403).json({ error: "Forbidden" });
+      }
+      (req as any).user = decoded;
+      next();
+    } catch (error) {
+      res.status(401).json({ error: "Unauthorized" });
+    }
+  };
+
+  app.post("/api/upload", isAdmin, upload.single('image'), (req: any, res) => {
+    if (!req.file) {
+      return res.status(400).json({ error: "No file uploaded" });
+    }
+    res.json({ url: `/uploads/${req.file.filename}` });
+  });
+
   // API routes
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok" });
@@ -88,24 +126,6 @@ async function startServer() {
       }
       const token = authHeader.split(" ")[1];
       const decoded = jwt.verify(token, JWT_SECRET) as { id: string, role: string };
-      (req as any).user = decoded;
-      next();
-    } catch (error) {
-      res.status(401).json({ error: "Invalid token" });
-    }
-  };
-
-  const isAdmin = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    try {
-      const authHeader = req.headers.authorization;
-      if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return res.status(401).json({ error: "Unauthorized" });
-      }
-      const token = authHeader.split(" ")[1];
-      const decoded = jwt.verify(token, JWT_SECRET) as { id: string, role: string };
-      if (decoded.role !== "ADMIN") {
-        return res.status(403).json({ error: "Forbidden" });
-      }
       (req as any).user = decoded;
       next();
     } catch (error) {
@@ -397,6 +417,27 @@ async function startServer() {
     }
   });
 
+  app.get("/api/orders/:id/invoice", isAdmin, async (req, res) => {
+    try {
+      const order = await prisma.order.findUnique({
+        where: { id: req.params.id },
+        include: {
+          user: true,
+          items: { include: { product: true } }
+        }
+      });
+      if (!order) return res.status(404).json({ error: "Order not found" });
+      
+      const invoice = generateInvoice(order);
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `attachment; filename=invoice-${order.id}.pdf`);
+      res.send(Buffer.from(await invoice.arrayBuffer()));
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Failed to generate invoice" });
+    }
+  });
+
   app.post("/api/orders", async (req, res) => {
     try {
       const { customer, items, total } = req.body;
@@ -446,9 +487,46 @@ async function startServer() {
           }
         },
         include: {
-          items: true
+          items: { include: { product: true } }
         }
       });
+      
+      // Create Shiprocket order
+      try {
+        const shiprocketOrder = await shiprocketService.createOrder({
+          order_id: order.id,
+          order_date: new Date().toISOString(),
+          pickup_location: "Primary",
+          billing_customer_name: customer.firstName,
+          billing_last_name: customer.lastName,
+          billing_address: customer.address,
+          billing_city: customer.city,
+          billing_state: customer.state,
+          billing_country: "India",
+          billing_email: customer.email,
+          billing_phone: customer.phone,
+          billing_pincode: customer.pincode,
+          shipping_is_billing: true,
+          order_items: order.items.map((item: any) => ({
+            name: item.product.name,
+            sku: item.productId,
+            units: item.quantity,
+            selling_price: item.price
+          })),
+          payment_method: "Prepaid",
+          sub_total: order.totalAmount,
+          length: 10,
+          breadth: 10,
+          height: 10,
+          weight: 0.5
+        });
+        await prisma.order.update({
+          where: { id: order.id },
+          data: { shipmentId: String(shiprocketOrder.shipment_id) }
+        });
+      } catch (error) {
+        console.error("Failed to create Shiprocket shipment:", error);
+      }
       
       res.json(order);
     } catch (error) {
@@ -546,6 +624,22 @@ async function startServer() {
     } catch (error) {
       console.error("Failed to fetch customers:", error);
       res.status(500).json({ error: "Failed to fetch customers" });
+    }
+  });
+
+  app.get("/api/orders/:id/tracking", async (req, res) => {
+    try {
+      const order = await prisma.order.findUnique({
+        where: { id: req.params.id },
+      });
+      if (!order || !order.shipmentId) {
+        return res.status(404).json({ message: 'Order or shipment not found' });
+      }
+      const tracking = await shiprocketService.getTracking(order.shipmentId);
+      res.json(tracking);
+    } catch (error) {
+      console.error("Failed to fetch tracking details:", error);
+      res.status(500).json({ message: 'Error fetching tracking details' });
     }
   });
 

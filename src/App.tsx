@@ -70,23 +70,23 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <div className="flex items-center">
-            <button className="p-2 -ml-2 mr-4 md:hidden text-gray-900 hover:text-orange-600 transition-colors">
+            <button className="p-2 -ml-2 mr-4 md:hidden text-gray-900 hover:text-secondary transition-colors">
               <Menu className="h-6 w-6" />
             </button>
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="bg-gray-900 text-white p-1.5 rounded-lg group-hover:bg-orange-600 transition-colors">
+              <div className="bg-primary text-white p-1.5 rounded-lg group-hover:bg-secondary transition-colors">
                 <Package className="h-6 w-6" />
               </div>
-              <span className="text-2xl font-extrabold tracking-tight text-gray-900 group-hover:text-orange-600 transition-colors">
+              <span className="text-2xl font-extrabold tracking-tight text-gray-900 group-hover:text-secondary transition-colors">
                 PACK MY CAKE
               </span>
             </Link>
           </div>
           
           <div className="hidden md:flex space-x-10">
-            <Link to="/shop" className="text-sm font-bold text-gray-900 hover:text-orange-600 transition-colors uppercase tracking-wider">Shop</Link>
-            <Link to="/categories" className="text-sm font-bold text-gray-900 hover:text-orange-600 transition-colors uppercase tracking-wider">Categories</Link>
-            <Link to="/about" className="text-sm font-bold text-gray-900 hover:text-orange-600 transition-colors uppercase tracking-wider">About Us</Link>
+            <Link to="/shop" className="text-sm font-bold text-gray-900 hover:text-secondary transition-colors uppercase tracking-wider">Shop</Link>
+            <Link to="/categories" className="text-sm font-bold text-gray-900 hover:text-secondary transition-colors uppercase tracking-wider">Categories</Link>
+            <Link to="/about" className="text-sm font-bold text-gray-900 hover:text-secondary transition-colors uppercase tracking-wider">About Us</Link>
           </div>
 
           <div className="flex items-center space-x-6">
@@ -106,39 +106,39 @@ const Navbar = () => {
                       placeholder="Search products..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-white border border-gray-200 rounded-full py-2 px-4 text-sm focus:outline-none focus:border-orange-600 shadow-sm"
+                      className="w-full bg-white border border-gray-200 rounded-full py-2 px-4 text-sm focus:outline-none focus:border-secondary shadow-sm"
                     />
                   </motion.form>
                 )}
               </AnimatePresence>
               <button 
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="text-gray-900 hover:text-orange-600 transition-colors relative z-10"
+                className="text-gray-900 hover:text-secondary transition-colors relative z-10"
               >
                 <Search className="h-5 w-5" />
               </button>
             </div>
             {user ? (
               <div className="flex items-center space-x-4">
-                <Link to="/profile" className="flex items-center space-x-2 text-gray-900 hover:text-orange-600 transition-colors group">
-                  <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-600 transition-colors">
-                    <User className="h-4 w-4 text-orange-600 group-hover:text-white transition-colors" />
+                <Link to="/profile" className="flex items-center space-x-2 text-gray-900 hover:text-secondary transition-colors group">
+                  <div className="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center group-hover:bg-secondary transition-colors">
+                    <User className="h-4 w-4 text-secondary group-hover:text-white transition-colors" />
                   </div>
                   <span className="text-sm font-bold hidden sm:block">Hi, {user.name.split(' ')[0]}</span>
                 </Link>
                 {user.role === 'ADMIN' && (
-                  <Link to="/admin" className="text-sm font-bold text-orange-600 hover:text-orange-700 transition-colors uppercase tracking-wider hidden sm:block">Admin</Link>
+                  <Link to="/admin" className="text-sm font-bold text-secondary hover:text-secondary/80 transition-colors uppercase tracking-wider hidden sm:block">Admin</Link>
                 )}
-                <button onClick={logout} className="text-gray-900 hover:text-orange-600 transition-colors">
+                <button onClick={logout} className="text-gray-900 hover:text-secondary transition-colors">
                   <LogOut className="h-5 w-5" />
                 </button>
               </div>
             ) : (
-              <Link to="/login" className="text-gray-900 hover:text-orange-600 transition-colors">
+              <Link to="/login" className="text-gray-900 hover:text-secondary transition-colors">
                 <User className="h-5 w-5" />
               </Link>
             )}
-            <Link to="/cart" className="text-gray-900 hover:text-orange-600 transition-colors relative group">
+            <Link to="/cart" className="text-gray-900 hover:text-secondary transition-colors relative group">
               <ShoppingBag className="h-5 w-5" />
               <AnimatePresence>
                 {cartCount > 0 && (
@@ -146,7 +146,7 @@ const Navbar = () => {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
-                    className="absolute -top-2 -right-2 bg-orange-600 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center shadow-sm group-hover:bg-gray-900 transition-colors"
+                    className="absolute -top-2 -right-2 bg-secondary text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center shadow-sm group-hover:bg-primary transition-colors"
                   >
                     {cartCount}
                   </motion.span>
@@ -171,10 +171,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-6 group">
-              <div className="bg-white text-gray-900 p-1.5 rounded-lg group-hover:bg-orange-600 group-hover:text-white transition-colors">
+              <div className="bg-white text-primary p-1.5 rounded-lg group-hover:bg-secondary group-hover:text-white transition-colors">
                 <Package className="h-6 w-6" />
               </div>
-              <span className="text-2xl font-extrabold tracking-tight text-white group-hover:text-orange-500 transition-colors">
+              <span className="text-2xl font-extrabold tracking-tight text-white group-hover:text-secondary transition-colors">
                 PACK MY CAKE
               </span>
             </Link>
@@ -196,30 +196,30 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-lg mb-6 text-white uppercase tracking-wider">Shop</h4>
             <ul className="space-y-3 text-sm font-medium text-gray-400">
-              <li><Link to="/shop" className="hover:text-orange-500 transition-colors">All Products</Link></li>
-              <li><Link to="/categories/cake-boxes" className="hover:text-orange-500 transition-colors">Cake Boxes</Link></li>
-              <li><Link to="/categories/cake-boards" className="hover:text-orange-500 transition-colors">Cake Boards</Link></li>
-              <li><Link to="/categories/cupcake-boxes" className="hover:text-orange-500 transition-colors">Cupcake Boxes</Link></li>
-              <li><Link to="/categories/accessories" className="hover:text-orange-500 transition-colors">Accessories</Link></li>
+              <li><Link to="/shop" className="hover:text-secondary transition-colors">All Products</Link></li>
+              <li><Link to="/categories/cake-boxes" className="hover:text-secondary transition-colors">Cake Boxes</Link></li>
+              <li><Link to="/categories/cake-boards" className="hover:text-secondary transition-colors">Cake Boards</Link></li>
+              <li><Link to="/categories/cupcake-boxes" className="hover:text-secondary transition-colors">Cupcake Boxes</Link></li>
+              <li><Link to="/categories/accessories" className="hover:text-secondary transition-colors">Accessories</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold text-lg mb-6 text-white uppercase tracking-wider">Support</h4>
             <ul className="space-y-3 text-sm font-medium text-gray-400">
-              <li><Link to="/contact" className="hover:text-orange-500 transition-colors">Contact Us</Link></li>
-              <li><Link to="/faq" className="hover:text-orange-500 transition-colors">FAQs</Link></li>
-              <li><Link to="/shipping" className="hover:text-orange-500 transition-colors">Shipping Policy</Link></li>
-              <li><Link to="/returns" className="hover:text-orange-500 transition-colors">Returns & Refunds</Link></li>
-              <li><Link to="/track-order" className="hover:text-orange-500 transition-colors">Track Order</Link></li>
+              <li><Link to="/contact" className="hover:text-secondary transition-colors">Contact Us</Link></li>
+              <li><Link to="/faq" className="hover:text-secondary transition-colors">FAQs</Link></li>
+              <li><Link to="/shipping" className="hover:text-secondary transition-colors">Shipping Policy</Link></li>
+              <li><Link to="/returns" className="hover:text-secondary transition-colors">Returns & Refunds</Link></li>
+              <li><Link to="/track-order" className="hover:text-secondary transition-colors">Track Order</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold text-lg mb-6 text-white uppercase tracking-wider">Business</h4>
             <ul className="space-y-3 text-sm font-medium text-gray-400">
-              <li><Link to="/bulk" className="hover:text-orange-500 transition-colors">Wholesale Enquiry</Link></li>
-              <li><Link to="/custom" className="hover:text-orange-500 transition-colors">Custom Packaging</Link></li>
-              <li><Link to="/about" className="hover:text-orange-500 transition-colors">Our Story</Link></li>
-              <li><Link to="/sustainability" className="hover:text-orange-500 transition-colors">Sustainability</Link></li>
+              <li><Link to="/bulk" className="hover:text-secondary transition-colors">Wholesale Enquiry</Link></li>
+              <li><Link to="/custom" className="hover:text-secondary transition-colors">Custom Packaging</Link></li>
+              <li><Link to="/about" className="hover:text-secondary transition-colors">Our Story</Link></li>
+              <li><Link to="/sustainability" className="hover:text-secondary transition-colors">Sustainability</Link></li>
             </ul>
           </div>
         </div>
@@ -251,7 +251,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
 const LoadingFallback = () => (
   <div className="min-h-[60vh] flex items-center justify-center">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-600"></div>
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary"></div>
   </div>
 );
 
