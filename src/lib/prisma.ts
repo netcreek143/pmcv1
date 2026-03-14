@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
-import { PrismaLibSql } from '@prisma/adapter-libsql';
+import { PrismaLibSQL } from '@prisma/adapter-libsql';
+import { createClient } from '@libsql/client';
 
 const dbUrl = process.env.DATABASE_URL || 'file:./dev.db';
 
@@ -10,11 +11,11 @@ process.env.PRISMA_DATABASE_URL = 'file:./dev.db';
 let prisma: PrismaClient;
 
 if (dbUrl.startsWith('libsql://')) {
-  const config = {
+  const libsql = createClient({
     url: dbUrl,
     authToken: dbUrl.includes('authToken=') ? dbUrl.split('authToken=')[1].split('&')[0] : undefined,
-  };
-  const adapter = new PrismaLibSql(config);
+  });
+  const adapter = new PrismaLibSQL(libsql);
   prisma = new PrismaClient({ adapter });
 } else {
   prisma = new PrismaClient({
