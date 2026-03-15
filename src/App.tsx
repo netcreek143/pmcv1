@@ -285,7 +285,7 @@ const MobileBottomNav = () => {
   }
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+    <div className="md:hidden fixed bottom-6 left-4 right-4 bg-white/60 backdrop-blur-xl border border-white/40 rounded-2xl z-50 shadow-[0_8px_32px_rgba(0,0,0,0.1)] overflow-hidden">
       <div className="flex justify-around items-center h-16 px-2">
         <Link to="/" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/' ? 'text-brand' : 'text-gray-400 hover:text-gray-900'}`}>
           <Package className="h-5 w-5" />
