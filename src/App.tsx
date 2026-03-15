@@ -285,17 +285,17 @@ const MobileBottomNav = () => {
   }
 
   return (
-    <div className="md:hidden fixed bottom-6 left-4 right-4 bg-white/60 backdrop-blur-xl border border-white/40 rounded-2xl z-50 shadow-[0_8px_32px_rgba(0,0,0,0.1)] overflow-hidden">
+    <div className="md:hidden fixed bottom-6 left-4 right-4 bg-white/80 backdrop-blur-xl border border-white/40 rounded-2xl z-50 shadow-[0_8px_32px_rgba(0,0,0,0.15)] overflow-hidden">
       <div className="flex justify-around items-center h-16 px-2">
-        <Link to="/" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/' ? 'text-brand' : 'text-gray-400 hover:text-gray-900'}`}>
+        <Link to="/" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/' ? 'text-brand' : 'text-gray-600 hover:text-gray-900'}`}>
           <Package className="h-5 w-5" />
           <span className="text-[10px] font-bold uppercase tracking-wider">Home</span>
         </Link>
-        <Link to="/shop" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/shop' ? 'text-brand' : 'text-gray-400 hover:text-gray-900'}`}>
+        <Link to="/shop" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/shop' ? 'text-brand' : 'text-gray-600 hover:text-gray-900'}`}>
           <Search className="h-5 w-5" />
           <span className="text-[10px] font-bold uppercase tracking-wider">Shop</span>
         </Link>
-        <Link to="/cart" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors relative ${location.pathname === '/cart' ? 'text-brand' : 'text-gray-400 hover:text-gray-900'}`}>
+        <Link to="/cart" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors relative ${location.pathname === '/cart' ? 'text-brand' : 'text-gray-600 hover:text-gray-900'}`}>
           <div className="relative">
              <ShoppingBag className="h-5 w-5" />
              {cartCount > 0 && (
@@ -306,7 +306,7 @@ const MobileBottomNav = () => {
           </div>
           <span className="text-[10px] font-bold uppercase tracking-wider">Cart</span>
         </Link>
-        <Link to="/profile" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/profile' ? 'text-brand' : 'text-gray-400 hover:text-gray-900'}`}>
+        <Link to="/profile" className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${location.pathname === '/profile' ? 'text-brand' : 'text-gray-600 hover:text-gray-900'}`}>
           <User className="h-5 w-5" />
           <span className="text-[10px] font-bold uppercase tracking-wider">Profile</span>
         </Link>
